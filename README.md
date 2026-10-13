@@ -76,6 +76,12 @@ python probe_llm.py --route both --mode all --out reports/comparacion.json
 
 Para que la comparación tenga sentido, ambas rutas deben apuntar al mismo modelo y versión. Envía los mismos textos y parámetros por ensayo, salvo el nombre del modelo/despliegue. En herramientas usa el mismo recibo aleatorio entre rutas; cada respuesta proporciona su propio `tool_call_id`.
 
+## Dónde consultar los límites oficiales de Azure
+
+Consultá la [tabla oficial de modelos de Azure: contexto y límites de entrada/salida](https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure?pivots=azure-openai). Buscá tu modelo y versión: la tabla muestra la ventana de contexto total y los límites de entrada y salida; revisá también las notas específicas del modelo y de la API utilizada.
+
+Para los límites de uso, consultá [cuotas y límites de Azure OpenAI: TPM y RPM](https://learn.microsoft.com/en-us/azure/foundry/openai/quotas-limits). TPM son tokens por minuto y RPM son solicitudes por minuto; estas cuotas regulan el ritmo de uso y son distintas del contexto disponible en una petición.
+
 ## Contexto grande, de forma explícita
 
 El valor de referencia de entrada es **922.000 tokens**, configurable con `--input-limit`. Azure documenta GPT-5.6 Sol con contexto total de 1.050.000, entrada máxima de 922.000 y salida máxima de 128.000; esas cifras son de referencia, no una medición de tu despliegue. [Documentación de Azure](https://learn.microsoft.com/en-us/azure/foundry/foundry-models/concepts/models-sold-directly-by-azure?pivots=azure-openai). OpenAI documenta el mismo contexto total y máximo de salida. [Modelo GPT-5.6 Sol](https://developers.openai.com/api/docs/models/gpt-5.6-sol).
